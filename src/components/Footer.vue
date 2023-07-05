@@ -1,3 +1,4 @@
+
 <template>
       <footer class="footer">
       <div class="footer__wrapper container">
@@ -63,7 +64,7 @@
 
         <p class="footer__desc">
           Все права на&nbsp;материалы, находящиеся на&nbsp;сайте, охраняются
-          в&nbsp;соответствии  с&nbsp;законодательством&nbsp;РФ, в&nbsp;том
+          в&nbsp;соответствии с&nbsp;законодательством&nbsp;РФ, в&nbsp;том
           числе об&nbsp;авторском праве и&nbsp;смежных правах.
         </p>
 

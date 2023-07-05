@@ -89,7 +89,7 @@
 
                 <BaseColorSelectorVue
                   :colors="product.colors"
-                  :selectedColorId.sync="selectedColorId"
+                  :selectedColorId="selectedColorId"
                 />
               </fieldset>
 
@@ -135,7 +135,7 @@
               </fieldset>
 
               <div class="item__row">
-                <BaseCounterVue :count.sync="productAmount" :minValue="1" />
+                <BaseCounterVue :count="productAmount" :minValue="1" />
                 <button
                   class="button button--primery"
                   type="submit"

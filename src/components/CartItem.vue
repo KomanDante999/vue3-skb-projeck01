@@ -1,3 +1,4 @@
+
 <template>
   <li class="cart__item product">
     <div class="product__pic">
@@ -13,7 +14,7 @@
     </h3>
     <span class="product__code"> Артикул: {{ item.product.id }} </span>
 
-    <BaseCounterVue :count.sync="amount" :minValue="1"/>
+    <BaseCounterVue :count="amount" :minValue="1"/>
 
     <b class="product__price">
       {{ numberFormat(item.amount * item.product.price) }} ₽

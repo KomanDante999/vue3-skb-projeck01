@@ -1,3 +1,4 @@
+
 <template>
   <ul class="catalog__pagination pagination">
     <li class="pagination__item">

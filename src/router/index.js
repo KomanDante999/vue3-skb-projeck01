@@ -1,14 +1,12 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
+import {createRouter, createWebHashHistory} from "vue-router";
+import 'core-js/stable/promise';
 import MainPage from "@/pages/MainPage";
 import NotFoundPage from "@/pages/NotFoundPage";
 import ProductPage from "@/pages/ProductPage";
 import CartPage from "@/pages/CartPage";
 import OrderPage from "@/pages/OrderPage";
 import OrderInfoPage from "@/pages/OrderInfoPage";
-
-
-Vue.use(VueRouter);
+import config from "../../vue.config";
 
 const routes = [
   { name: 'main', component: MainPage, path: '/'},
@@ -16,8 +14,11 @@ const routes = [
   {name: 'cart', component: CartPage, path: '/cart'},
   {name: 'order', component: OrderPage, path: '/order'},
   {name: 'orderInfo', component: OrderInfoPage, path: '/order/:id'},
-  {name: 'notFound', component: NotFoundPage, path: '*'},
+  {name: 'notFound', component: NotFoundPage, path: '/pathMatch(.*)*'},
 ]
-const router = new VueRouter({routes});
+const router = createRouter({
+  history: createWebHashHistory(config.publicPath),
+  routes
+});
 
 export default router;

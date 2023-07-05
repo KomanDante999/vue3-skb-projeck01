@@ -7,10 +7,10 @@
 
     <div class="content__catalog">
       <ProductFilter
-        :prise-from.sync="filterPriseFrom"
-        :prise-to.sync="filterPriseTo"
-        :category-id.sync="filterCategoryId"
-        :color-id.sync="filterColorId"
+        :prise-from="filterPriseFrom"
+        :prise-to="filterPriseTo"
+        :category-id="filterCategoryId"
+        :color-id="filterColorId"
       />
       <section class="catalog">
         <div class="catalog__error-block">

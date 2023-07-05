@@ -1,3 +1,4 @@
+
 <template>
   <div class="p-rel">
     <BasePrelosderVue class="header-preload" :trigger="$store.state.cartLoading" :src="src" />

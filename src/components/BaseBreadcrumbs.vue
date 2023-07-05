@@ -1,3 +1,4 @@
+
 <template>
   <ul class="breadcrumbs">
     <li v-for="(page, index) in breadcrumbs" :key="index" class="breadcrumbs__item">

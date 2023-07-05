@@ -1,3 +1,4 @@
+
 <template>
   <ul class="catalog__list">
     <ProductItem

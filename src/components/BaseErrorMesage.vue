@@ -1,3 +1,4 @@
+
 <template>
   <div v-if="trigger" class="message">
     <h3 class="message__title"> {{ message }} </h3>

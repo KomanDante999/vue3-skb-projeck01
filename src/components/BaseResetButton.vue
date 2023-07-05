@@ -1,3 +1,4 @@
+
 <template>
   <div v-if="trigger">
     <button class="btn-reset" type="button" @click.prevent="callback">

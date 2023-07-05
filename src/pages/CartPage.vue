@@ -1,3 +1,4 @@
+
 <template>
   <div>
     <div class="catalog__error-block">
@@ -36,7 +37,6 @@
               Итого: <span> {{ numberFormat(totalPrice) }} ₽</span>
             </p>
             <router-link
-              tag="button"
               class="cart__button button button--primery"
               :to="{ name: 'order' }"
               type="submit"

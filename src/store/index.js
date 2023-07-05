@@ -1,12 +1,9 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
+import {createStore} from 'vuex';
 import axios from "axios";
 import { API_BASE_URL, TIMEOUT } from "@/config";
 import 'core-js/stable/promise';
 
-Vue.use(Vuex);
-
-export default new Vuex.Store({
+export default createStore({
   state: {
     cartProducts: [],
 

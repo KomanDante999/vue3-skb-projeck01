@@ -17,7 +17,7 @@
 
     <BaseColorSelectorVue
       :colors="product.colors"
-      :selectedColorId.sync="selectedColorId"
+      :selectedColorId="selectedColorId"
     />
   </li>
 </template>
