@@ -46,12 +46,15 @@
 
 <script>
 export default {
-  model: {
-    prop: "page",
-    event: "paginate",
-  },
-  props: ["page", "count", "perPage"],
+  // model: {
+  //   prop: "page",
+  //   event: "paginate",
+  // },
+  props: ["modelValue", "count", "perPage"],
   computed: {
+    page() {
+      return this.modelValue
+    },
     pagesTotalNum() {
       return Math.ceil(this.count / this.perPage);
     },
@@ -61,7 +64,7 @@ export default {
       if (page < 1 || page > this.pagesTotalNum) {
         return
       }
-      this.$emit("paginate", page);
+      this.$emit("update:modelValue", page);
     },
   },
 };

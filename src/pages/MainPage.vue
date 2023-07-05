@@ -43,7 +43,6 @@
 </style>
 
 <script>
-// import products from "@/data/products";
 import axios from "axios";
 import { API_BASE_URL, TIMEOUT } from "@/config";
 import ProductList from "@/components/ProductList.vue";
@@ -109,7 +108,6 @@ export default {
   },
   created() {
     this.loadProducts();
-    // this.loadProducts();
   },
   watch: {
     page() {

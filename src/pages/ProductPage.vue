@@ -340,13 +340,12 @@ export default {
     },
     numberFormat,
   },
-  watch: {
-    "$route.params.id": {
-      handler() {
-        this.loadProduct();
-      },
-      immediate: true,
-    },
+  created(){
+    this.loadProduct();
+  },
+  beforeRouteUpdate() {
+    this.loadProduct();
+
   },
 };
 </script>
