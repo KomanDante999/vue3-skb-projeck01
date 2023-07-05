@@ -14,7 +14,7 @@
       <div class="content__top">
         <BaseBreadcrumbsVue :breadcrumbs="breadcrumbs" />
         <h1 class="content__title">Корзина</h1>
-        <ProductTotalVue :totalProduct="totalProductItems"/>
+        <ProductTotalVue :totalProduct="totalProductItems" />
       </div>
 
       <section class="cart">
@@ -70,9 +70,10 @@ import BaseErrorMesageVue from "@/components/BaseErrorMesage.vue";
 import BaseResetButtonVue from "@/components/BaseResetButton.vue";
 import productsInfoMixin from "@/mixins/productsInfoMixin";
 import BaseBreadcrumbsVue from "@/components/BaseBreadcrumbs.vue";
-import ProductTotalVue from '@/components/ProductTotal.vue';
+import ProductTotalVue from "@/components/ProductTotal.vue";
+import { defineComponent } from "vue";
 
-export default {
+export default defineComponent({
   components: {
     CartItemVue,
     BasePrelosderVue,
@@ -95,7 +96,7 @@ export default {
           routerName: "main",
         },
         {
-          titlePage: 'Корзина',
+          titlePage: "Корзина",
           routerName: "",
           cursorNone: true,
         },
@@ -119,5 +120,5 @@ export default {
   created() {
     this.loadingCart();
   },
-};
+});
 </script>
