@@ -45,11 +45,9 @@
 </template>
 
 <script>
-export default {
-  // model: {
-  //   prop: "page",
-  //   event: "paginate",
-  // },
+import { defineComponent } from "vue";
+
+export default defineComponent({
   props: ["modelValue", "count", "perPage"],
   computed: {
     page() {
@@ -67,5 +65,5 @@ export default {
       this.$emit("update:modelValue", page);
     },
   },
-};
+});
 </script>

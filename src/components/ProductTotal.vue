@@ -11,11 +11,12 @@
 
 <script>
 import pluralRules from "@/helpers/pluralRules";
+import { defineComponent } from "vue";
 
-export default {
+export default defineComponent({
   props: ['totalProduct'],
   methods: {
     pluralRules
   }
-};
+});
 </script>

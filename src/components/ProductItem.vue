@@ -25,8 +25,9 @@
 <script>
 import numberFormat from "@/helpers/numberFormat";
 import BaseColorSelectorVue from "@/components/BaseColorSelector.vue";
+import { defineComponent } from "vue";
 
-export default {
+export default defineComponent({
   name: "ProductItem",
   props: ["product"],
   components: { BaseColorSelectorVue },
@@ -38,5 +39,5 @@ export default {
   methods: {
     numberFormat,
   },
-};
+});
 </script>

@@ -27,12 +27,13 @@
 <script>
 import numberFormat from "@/helpers/numberFormat";
 import pluralRules from "@/helpers/pluralRules";
+import { defineComponent } from "vue";
 
-export default {
+export default defineComponent({
   props: ["products", "totalPrice", "totalProductItems"],
   methods: {
     numberFormat,
     pluralRules,
   },
-};
+});
 </script>

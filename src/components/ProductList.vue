@@ -12,8 +12,9 @@
 
 <script>
 import ProductItem from "@/components/ProductItem.vue";
+import { defineComponent } from "vue";
 
-export default {
+export default defineComponent({
   name: "ProductList",
   components: { ProductItem },
   data() {
@@ -22,5 +23,5 @@ export default {
     };
   },
   props: ["products"],
-};
+});
 </script>

@@ -51,8 +51,9 @@ import ProductFilter from "@/components/ProductFilter.vue";
 import BaseErrorMesageVue from "@/components/BaseErrorMesage.vue";
 import BaseResetButtonVue from "@/components/BaseResetButton.vue";
 import BasePrelosderVue from '@/components/BasePrelosder.vue';
+import { defineComponent } from "vue";
 
-export default {
+export default defineComponent({
   components: {
     ProductList,
     BasePagination,
@@ -126,5 +127,5 @@ export default {
       this.loadProducts();
     },
   },
-};
+});
 </script>

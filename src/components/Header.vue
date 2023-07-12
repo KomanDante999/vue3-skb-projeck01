@@ -22,8 +22,9 @@
 
 <script>
 import CartIndicatorVue from '@/components/CartIndicator.vue';
+import { defineComponent } from 'vue';
 
-export default {
+export default defineComponent({
   components: {CartIndicatorVue},
-}
+})
 </script>

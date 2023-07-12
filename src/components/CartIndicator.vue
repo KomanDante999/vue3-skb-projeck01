@@ -33,7 +33,8 @@
 import { mapGetters } from "vuex";
 import { PRELOAD_GEARS } from "@/config";
 import BasePrelosderVue from "@/components/BasePrelosder.vue";
-export default {
+import { defineComponent } from "vue";
+export default defineComponent({
   components: {
     BasePrelosderVue,
   },
@@ -45,5 +46,5 @@ export default {
   computed: {
     ...mapGetters({ totalProductItems: "cartTotalProductItems" }),
   },
-};
+});
 </script>

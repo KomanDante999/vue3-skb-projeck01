@@ -28,7 +28,9 @@
 </style>
 
 <script>
-export default {
+import { defineComponent } from "vue";
+
+export default defineComponent({
   props: {
     trigger: {
       type: Boolean,
@@ -45,5 +47,5 @@ export default {
       this.$emit("callback");
     },
   },
-};
+});
 </script>

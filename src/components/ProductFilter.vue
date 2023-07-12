@@ -177,12 +177,11 @@
 </template>
 
 <script>
-// import catigories from "@/data/catigories";
-// import colors from "@/data/colors";
 import axios from 'axios';
 import {API_BASE_URL} from '@/config';
+import { defineComponent } from 'vue';
 
-export default {
+export default defineComponent({
   data() {
     return {
       currentPriseFrom: 0,
@@ -245,5 +244,5 @@ export default {
     this.loadCatigories();
     this.loadColors();
   }
-};
+});
 </script>

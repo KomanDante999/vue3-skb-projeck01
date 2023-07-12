@@ -33,7 +33,9 @@
 </template>
 
 <script>
-export default {
+import { defineComponent } from "vue";
+
+export default defineComponent({
   props: {
     count: {
       type: Number,
@@ -71,5 +73,5 @@ export default {
       this.$emit("update:count", newValue);
     },
   },
-};
+});
 </script>

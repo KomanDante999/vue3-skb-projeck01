@@ -16,7 +16,9 @@
 </template>
 
 <script>
-export default {
+import { defineComponent } from "vue";
+
+export default defineComponent({
   props: ['colors', 'selectedColorId'],
   computed: {
     currentColorId: {
@@ -28,5 +30,5 @@ export default {
       }
     }
   }
-};
+});
 </script>

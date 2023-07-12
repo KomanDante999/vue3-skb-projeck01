@@ -12,8 +12,9 @@
 import { mapActions, mapMutations } from 'vuex';
 import HeaderVue from '@/components/Header.vue';
 import FooterVue from '@/components/Footer.vue';
+import { defineComponent } from 'vue';
 
-export default {
+export default defineComponent({
   components: {HeaderVue, FooterVue},
   methods: {
     ...mapActions(['loadCart']),
@@ -27,5 +28,5 @@ export default {
 
     this.loadCart()
   }
-};
+});
 </script>

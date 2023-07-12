@@ -18,8 +18,9 @@
 
 <script>
 import { PRELOAD_SNIPPER5 } from '@/config'
+import { defineComponent } from 'vue';
 
-export default {
+export default defineComponent({
   props: {
     trigger: {
       type: Boolean,
@@ -29,5 +30,5 @@ export default {
       default: PRELOAD_SNIPPER5,
     }
   },
-};
+});
 </script>

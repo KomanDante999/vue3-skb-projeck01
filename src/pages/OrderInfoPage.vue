@@ -81,8 +81,9 @@ import BaseBreadcrumbsVue from "@/components/BaseBreadcrumbs.vue";
 import BasePrelosderVue from "@/components/BasePrelosder.vue";
 import { TIMEOUT } from "@/config";
 import 'core-js/stable/promise';
+import { defineComponent } from "vue";
 
-export default {
+export default defineComponent({
   components: {
     BaseBreadcrumbsVue,
     OrderProductsInfoVue,
@@ -127,6 +128,6 @@ export default {
       resolve()
     }, TIMEOUT)))
   },
-};
+});
 
 </script>

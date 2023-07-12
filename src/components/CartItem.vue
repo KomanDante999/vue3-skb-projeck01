@@ -37,10 +37,10 @@
 import { mapActions } from 'vuex';
 import numberFormat from '@/helpers/numberFormat';
 import BaseCounterVue from "@/components/BaseCounter.vue";
+import { defineComponent } from 'vue';
 
 
-export default {
-  // filters: {numberFormat},
+export default defineComponent({
   props: ['item'],
   components: {BaseCounterVue},
   computed: {
@@ -65,5 +65,5 @@ export default {
     //   this.$store.commit('deleteCartProduct', productId)
     // }
   }
-}
+})
 </script>

@@ -152,9 +152,10 @@ import OrderProductsInfoVue from "../components/OrderProductsInfo.vue";
 import BaseBreadcrumbsVue from "@/components/BaseBreadcrumbs.vue";
 import BasePrelosderVue from "@/components/BasePrelosder.vue";
 import ProductTotalVue from '@/components/ProductTotal.vue';
+import { defineComponent } from "vue";
 
 
-export default {
+export default defineComponent({
   components: {
     BaseInputTextVue,
     BaseInputTextaryaVue,
@@ -231,5 +232,5 @@ export default {
     },
   },
   mixins: [productsInfoMixin],
-};
+});
 </script>

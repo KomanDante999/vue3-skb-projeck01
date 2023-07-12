@@ -246,8 +246,6 @@
 
   
 <script>
-// import products from "@/data/products";
-// import catigories from "@/data/catigories";
 import { mapActions } from "vuex";
 import axios from "axios";
 import { API_BASE_URL, TIMEOUT } from "@/config";
@@ -258,8 +256,9 @@ import BasePrelosderVue from "@/components/BasePrelosder.vue";
 import BaseErrorMesageVue from "@/components/BaseErrorMesage.vue";
 import BaseResetButtonVue from "@/components/BaseResetButton.vue";
 import BaseBreadcrumbsVue from "@/components/BaseBreadcrumbs.vue";
+import { defineComponent } from "vue";
 
-export default {
+export default defineComponent ({
   components: {
     BaseCounterVue,
     BaseColorSelectorVue,
@@ -347,5 +346,5 @@ export default {
     this.loadProduct();
 
   },
-};
+});
 </script>

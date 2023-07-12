@@ -100,6 +100,7 @@
 </template>
 
 <script>
-export default {
-}
+import { defineComponent } from "vue";
+
+export default defineComponent({})
 </script>
