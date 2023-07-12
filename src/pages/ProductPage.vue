@@ -326,11 +326,7 @@ export default defineComponent ({
       clearTimeout(this.loadProductTimer);
       this.loadProductTimer = setTimeout(() => {
         axios
-          .get(API_BASE_URL + `/api/products/` + this.$route.params.id, {
-            // params: {
-            //   id: this.product.id,
-            // },
-          })
+          .get(API_BASE_URL + `/api/products/` + this.$route.params.id, {})
           .then((response) => (this.productData = response.data))
           .then(() => (this.selectedColorId = this.product.colors[0].id))
           .catch(() => (this.productLoadingFailed = true))

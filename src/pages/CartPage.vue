@@ -1,4 +1,3 @@
-
 <template>
   <div>
     <div class="catalog__error-block">
@@ -37,12 +36,19 @@
               Итого: <span> {{ numberFormat(totalPrice) }} ₽</span>
             </p>
             <router-link
-              class="cart__button button button--primery"
+              custom
               :to="{ name: 'order' }"
-              type="submit"
-              v-show="totalProductItems"
+              v-slot="{ navigate }"
+              
             >
-              Оформить заказ
+              <button
+                @click="navigate"
+                class="cart__button button button--primery"
+                :disabled="!totalPrice"
+                type="button"
+              >
+                Оформить заказ
+              </button>
             </router-link>
           </div>
         </form>
@@ -59,7 +65,6 @@
   flex-direction: column;
 }
 </style>
-
 
 <script>
 import { mapActions } from "vuex";
