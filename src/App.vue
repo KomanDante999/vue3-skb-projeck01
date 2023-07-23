@@ -1,32 +1,30 @@
 /* eslint-disable */
 <template>
-  <div>
-    <HeaderVue/>
-    <router-view />
-    <FooterVue/>
-
-  </div>
+  <HeaderVue />
+  <router-view />
+  <FooterVue />
+  <div id="teleport-target" />
 </template>
 
 <script>
-import { mapActions, mapMutations } from 'vuex';
-import HeaderVue from '@/components/Header.vue';
-import FooterVue from '@/components/Footer.vue';
-import { defineComponent } from 'vue';
+import { mapActions, mapMutations } from "vuex";
+import HeaderVue from "@/components/Header.vue";
+import FooterVue from "@/components/Footer.vue";
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  components: {HeaderVue, FooterVue},
+  components: { HeaderVue, FooterVue },
   methods: {
-    ...mapActions(['loadCart']),
-    ...mapMutations(['updateUserAccessKey'])
+    ...mapActions(["loadCart"]),
+    ...mapMutations(["updateUserAccessKey"]),
   },
-  created(){
-    const userAccessKey = localStorage.getItem('userAccessKey')
+  created() {
+    const userAccessKey = localStorage.getItem("userAccessKey");
     if (userAccessKey) {
-      this.updateUserAccessKey(userAccessKey)
+      this.updateUserAccessKey(userAccessKey);
     }
 
-    this.loadCart()
-  }
+    this.loadCart();
+  },
 });
 </script>

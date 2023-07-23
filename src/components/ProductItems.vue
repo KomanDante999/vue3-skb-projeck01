@@ -1,5 +1,10 @@
 <template>
-  <li class="catalog__item">
+  <li
+    v-bind="$attrs"
+    v-for="product in products"
+    :key="product.id"
+    :ref="fillRefs"
+  >
     <router-link
       class="catalog__pic"
       :to="{ name: 'product', params: { id: product.id } }"
@@ -17,7 +22,6 @@
 
     <BaseColorSelectorVue
       :colors="product.colors"
-      :selectedColorId="selectedColorId"
     />
   </li>
 </template>
@@ -29,15 +33,28 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "ProductItem",
-  props: ["product"],
+  inheritAttrs: false,
+  props: ["products"],
   components: { BaseColorSelectorVue },
   data() {
     return {
-      selectedColorId: this.product.colors[0].id,
+      productElements: [],
     };
   },
   methods: {
     numberFormat,
+    fillRefs(element) {
+      if (element) {
+        this.productElements.push(element);
+      }
+    },
+  },
+  // emits: ['MYclick'],
+  // mounted(){
+  //   this.$emit('MYclick', 'YAYU')
+  // },
+  beforeUpdate(){
+    this.productElements = []
   },
 });
 </script>

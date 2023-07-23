@@ -7,7 +7,7 @@
           class="colors__radio sr-only"
           type="radio"
           :value="color.id"
-          v-model="currentColorId"
+          v-model="selectedColorId"
         />
         <span class="colors__value" :style="{backgroundColor: color.code}"> </span>
       </label>
@@ -19,15 +19,10 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  props: ['colors', 'selectedColorId'],
-  computed: {
-    currentColorId: {
-      get(){
-        return this.selectedColorId
-      },
-      set(colorId){
-        this.$emit('update:selectedColorId', colorId)
-      }
+  props: ['colors'],
+  data(){
+    return {
+      selectedColorId: this.colors[0].id
     }
   }
 });

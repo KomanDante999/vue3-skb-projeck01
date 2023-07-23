@@ -6,12 +6,16 @@
     </div>
 
     <div class="content__catalog">
-      <ProductFilter
-        :prise-from="filterPriseFrom"
-        :prise-to="filterPriseTo"
-        :category-id="filterCategoryId"
-        :color-id="filterColorId"
-      />
+      <aside class="filter">
+        <ProductFilter
+          v-model:prise-from="filterPriseFrom"
+          v-model:prise-to="filterPriseTo"
+          v-model:category-id="filterCategoryId"
+          v-model:color-id="filterColorId"
+          class="filter-test"
+        />
+        <!-- <Teleport to="#teleport-target">Телепортация ура!!!</Teleport> -->
+      </aside>
       <section class="catalog">
         <div class="catalog__error-block">
           <BasePrelosderVue :trigger="productsLoading" />
@@ -50,7 +54,7 @@ import BasePagination from "@/components/BasePagination.vue";
 import ProductFilter from "@/components/ProductFilter.vue";
 import BaseErrorMesageVue from "@/components/BaseErrorMesage.vue";
 import BaseResetButtonVue from "@/components/BaseResetButton.vue";
-import BasePrelosderVue from '@/components/BasePrelosder.vue';
+import BasePrelosderVue from "@/components/BasePrelosder.vue";
 import { defineComponent } from "vue";
 
 export default defineComponent({

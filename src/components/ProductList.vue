@@ -1,27 +1,32 @@
 
 <template>
   <ul class="catalog__list">
-    <ProductItem
-      v-for="product in products"
-      :product="product"
-      :key="product.id"
-      
+    <ProductItems
+      :products="products"
+      class="catalog__item"
+      @click="test"
+      :aria-disabled="null"
     />
   </ul>
 </template>
 
 <script>
-import ProductItem from "@/components/ProductItem.vue";
+import ProductItems from "@/components/ProductItems.vue";
 import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "ProductList",
-  components: { ProductItem },
+  components: { ProductItems },
   data() {
     return {
       product: {},
     };
   },
   props: ["products"],
+  methods: {
+    test(){
+      console.log(...arguments);
+    }
+  }
 });
 </script>

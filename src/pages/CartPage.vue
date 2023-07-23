@@ -1,5 +1,4 @@
 <template>
-  <div>
     <div class="catalog__error-block">
       <BasePrelosderVue :trigger="cartLoading" />
       <BaseErrorMesageVue :trigger="cartLoadingFailed" />
@@ -54,7 +53,6 @@
         </form>
       </section>
     </main>
-  </div>
 </template>
 
 <style>
