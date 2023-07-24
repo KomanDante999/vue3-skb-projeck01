@@ -13,32 +13,36 @@
     </router-link>
 
     <h3 class="catalog__title">
-      <a href="#">
+      <a @click.prevent="openQuickView" href="#">
         {{ product.title }}
       </a>
     </h3>
 
     <span class="catalog__price"> {{ numberFormat(product.price) }} ₽ </span>
 
-    <BaseColorSelectorVue
-      :colors="product.colors"
-    />
+    <BaseColorSelectorVue :colors="product.colors" />
   </li>
+
+  <BaseModalVue v-model:open="isQuickViewOpen">
+    Товар добавлен в корзину
+  </BaseModalVue>
 </template>
 
 <script>
 import numberFormat from "@/helpers/numberFormat";
 import BaseColorSelectorVue from "@/components/BaseColorSelector.vue";
 import { defineComponent } from "vue";
+import BaseModalVue from "@/components/BaseModal.vue";
 
 export default defineComponent({
   name: "ProductItem",
   inheritAttrs: false,
   props: ["products"],
-  components: { BaseColorSelectorVue },
+  components: { BaseColorSelectorVue, BaseModalVue },
   data() {
     return {
       productElements: [],
+      isQuickViewOpen: false,
     };
   },
   methods: {
@@ -48,13 +52,19 @@ export default defineComponent({
         this.productElements.push(element);
       }
     },
+    openQuickView(){
+      this.isQuickViewOpen = true
+    },
+    closeQuickView(){
+      this.isQuickViewOpen = false
+    }
   },
   // emits: ['MYclick'],
   // mounted(){
   //   this.$emit('MYclick', 'YAYU')
   // },
-  beforeUpdate(){
-    this.productElements = []
+  beforeUpdate() {
+    this.productElements = [];
   },
 });
 </script>

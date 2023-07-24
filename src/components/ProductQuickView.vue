@@ -270,6 +270,12 @@ export default defineComponent({
     BaseBreadcrumbsVue,
     BaseModalVue,
   },
+  props: {
+    productId: {
+      type: [Number, String],
+      required: true,
+    }
+  },
   data() {
     return {
       productAmount: 1,
@@ -330,7 +336,7 @@ export default defineComponent({
       clearTimeout(this.loadProductTimer);
       this.loadProductTimer = setTimeout(() => {
         axios
-          .get(API_BASE_URL + `/api/products/` + this.$route.params.id, {})
+          .get(API_BASE_URL + `/api/products/` + this.productId, {})
           .then((response) => (this.productData = response.data))
           .then(() => (this.selectedColorId = this.product.colors[0].id))
           .catch(() => (this.productLoadingFailed = true))
