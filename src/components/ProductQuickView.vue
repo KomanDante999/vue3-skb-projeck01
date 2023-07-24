@@ -8,7 +8,7 @@
     />
   </div>
 
-  <main class="content container" v-if="productData">
+  <div class="content container" v-if="productData">
     <div class="content__top">
       <BaseBreadcrumbsVue :breadcrumbs="breadcrumbs" />
     </div>
@@ -217,7 +217,7 @@
         </div>
       </div>
     </section>
-  </main>
+  </div>
 </template>
 
 <style>

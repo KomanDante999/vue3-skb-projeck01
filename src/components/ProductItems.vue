@@ -13,7 +13,7 @@
     </router-link>
 
     <h3 class="catalog__title">
-      <a @click.prevent="openQuickView" href="#">
+      <a @click.prevent="openQuickView(product.id)" href="#">
         {{ product.title }}
       </a>
     </h3>
@@ -24,26 +24,46 @@
   </li>
 
   <BaseModalVue v-model:open="isQuickViewOpen">
-    Товар добавлен в корзину
+    <ProductQuickViewVue :product-id="currentProductId" />
   </BaseModalVue>
 </template>
 
 <script>
 import numberFormat from "@/helpers/numberFormat";
 import BaseColorSelectorVue from "@/components/BaseColorSelector.vue";
-import { defineComponent } from "vue";
+import { defineAsyncComponent, defineComponent, h } from "vue";
 import BaseModalVue from "@/components/BaseModal.vue";
 
 export default defineComponent({
   name: "ProductItem",
   inheritAttrs: false,
   props: ["products"],
-  components: { BaseColorSelectorVue, BaseModalVue },
+  components: {
+    BaseColorSelectorVue,
+    BaseModalVue,
+    ProductQuickViewVue: defineAsyncComponent({
+      loader: () => import('@/components/ProductQuickView.vue'),
+      delay: 0,
+      loadingComponent: () => h('div', 'загрузка...')
+    }),
+  },
   data() {
     return {
       productElements: [],
-      isQuickViewOpen: false,
+      currentProductId: null,
     };
+  },
+  computed: {
+    isQuickViewOpen: {
+      get() {
+        return !!this.currentProductId;
+      },
+      set(isOpen) {
+        if (!isOpen) {
+          this.currentProductId = null;
+        }
+      },
+    },
   },
   methods: {
     numberFormat,
@@ -52,17 +72,10 @@ export default defineComponent({
         this.productElements.push(element);
       }
     },
-    openQuickView(){
-      this.isQuickViewOpen = true
+    openQuickView(productId) {
+      this.currentProductId = productId;
     },
-    closeQuickView(){
-      this.isQuickViewOpen = false
-    }
   },
-  // emits: ['MYclick'],
-  // mounted(){
-  //   this.$emit('MYclick', 'YAYU')
-  // },
   beforeUpdate() {
     this.productElements = [];
   },
