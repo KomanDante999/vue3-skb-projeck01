@@ -258,9 +258,92 @@ import BaseResetButtonVue from "@/components/BaseResetButton.vue";
 import BaseBreadcrumbsVue from "@/components/BaseBreadcrumbs.vue";
 import BaseModalVue from "@/components/BaseModal.vue";
 
-import { defineComponent } from "vue";
+import { computed, defineComponent, ref } from "vue";
+import { useRoute } from "vue-router";
 
-export default defineComponent({
+const composition = defineComponent({
+  setup() {
+    const $route = useRoute();
+
+    const productAmount = ref(1);
+    const productData = ref(null);
+    const productLoading = ref(false);
+    const productLoadingFailed = ref(false);
+    const productAdded = ref(false);
+    const productAddSending = ref(false);
+    const selectedColorId = ref(null);
+    const isShowAddedMessage = ref(false);
+
+    const product = computed(() => {
+      return this.productData;
+    });
+    const catigory = computed(() => {
+      return this.productData.category;
+    });
+    const breadcrumbs = computed(() => {
+      return [
+        {
+          titlePage: "Каталог",
+          routerName: "main",
+        },
+        {
+          titlePage: this.catigory.title,
+          routerName: "main",
+        },
+        {
+          titlePage: this.product.title,
+          routerName: "",
+          cursorNone: true,
+        },
+      ];
+    });
+    const addToCart = () => {
+      productAdded.value = false;
+      productAddSending.value = true;
+
+      addProductToCard({
+        productId: product.id,
+        amount: productAmount,
+      }).then(() => {
+        productAdded.value = true;
+        productAddSending.value = false;
+        isShowAddedMessage.value = true;
+      });
+    };
+
+    const loadProduct = () => {
+      productLoading.value = true;
+      productLoadingFailed.value = false;
+      clearTimeout(loadProductTimer);
+      loadProductTimer.value = setTimeout(() => {
+        axios
+          .get(API_BASE_URL + `/api/products/` + $route.params.id, {})
+          .then((response) => (productData.value = response.data))
+          .then(() => (selectedColorId.value = product.colors[0].id))
+          .catch(() => (productLoadingFailed.value = true))
+          .then(() => (productLoading.value = false));
+      }, TIMEOUT);
+    };
+
+    return {
+      productAmount,
+      productData,
+      productLoading,
+      productLoadingFailed,
+      productAdded,
+      productAddSending,
+      selectedColorId,
+      isShowAddedMessage,
+      product,
+      catigory,
+      breadcrumbs,
+      addToCart,
+      loadProduct,
+    }
+  },
+});
+
+export default {
   components: {
     BaseCounterVue,
     BaseColorSelectorVue,
@@ -345,5 +428,5 @@ export default defineComponent({
   beforeRouteUpdate() {
     this.loadProduct();
   },
-});
+};
 </script>
