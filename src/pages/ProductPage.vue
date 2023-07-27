@@ -79,7 +79,7 @@
             class="form"
             action="#"
             method="POST"
-            @submit.prevent="addToCart"
+            @submit.prevent="doAddToCart"
           >
             <b class="item__price"> {{ numberFormat(product.price) }} ₽ </b>
 
@@ -246,7 +246,7 @@
 </style>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, useStore } from "vuex";
 import axios from "axios";
 import { API_BASE_URL, TIMEOUT } from "@/config";
 import BaseCounterVue from "@/components/BaseCounter.vue";
@@ -259,11 +259,12 @@ import BaseBreadcrumbsVue from "@/components/BaseBreadcrumbs.vue";
 import BaseModalVue from "@/components/BaseModal.vue";
 
 import { computed, defineComponent, ref } from "vue";
-import { useRoute } from "vue-router";
+import { onBeforeRouteUpdate, useRoute } from "vue-router";
 
 const composition = defineComponent({
   setup() {
     const $route = useRoute();
+    const $store = useStore()
 
     const productAmount = ref(1);
     const productData = ref(null);
@@ -275,7 +276,7 @@ const composition = defineComponent({
     const isShowAddedMessage = ref(false);
 
     const product = computed(() => {
-      return this.productData;
+      return this.productData.value;
     });
     const catigory = computed(() => {
       return this.productData.category;
@@ -297,13 +298,13 @@ const composition = defineComponent({
         },
       ];
     });
-    const addToCart = () => {
+    const doAddToCart = () => {
       productAdded.value = false;
       productAddSending.value = true;
 
-      addProductToCard({
+      $store.dispatch('addProductToCard', {
         productId: product.id,
-        amount: productAmount,
+        amount: productAmount.value,
       }).then(() => {
         productAdded.value = true;
         productAddSending.value = false;
@@ -311,7 +312,7 @@ const composition = defineComponent({
       });
     };
 
-    const loadProduct = () => {
+    const doLoadProduct = () => {
       productLoading.value = true;
       productLoadingFailed.value = false;
       clearTimeout(loadProductTimer);
@@ -325,6 +326,11 @@ const composition = defineComponent({
       }, TIMEOUT);
     };
 
+    doLoadProduct();
+    onBeforeRouteUpdate(() => {
+      doLoadProduct()
+    })
+
     return {
       productAmount,
       productData,
@@ -337,8 +343,8 @@ const composition = defineComponent({
       product,
       catigory,
       breadcrumbs,
-      addToCart,
-      loadProduct,
+      doAddToCart,
+      doLoadProduct,
     }
   },
 });
@@ -393,7 +399,7 @@ export default {
   methods: {
     ...mapActions(["addProductToCard"]),
 
-    addToCart() {
+    doAddToCart() {
       this.productAdded = false;
       this.productAddSending = true;
 
